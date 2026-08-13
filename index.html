@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DepTrust — Dependency Risk Radar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">◎</span>
+    <span class="brand-name">DepTrust</span>
+  </div>
+  <nav class="topnav">
+    <button class="navlink" data-route="dashboard">Risk Dashboard</button>
+    <button class="navlink" data-route="search">Explore Packages</button>
+  </nav>
+  <div class="db-status" id="dbStatus">
+    <span class="dot" id="dbDot"></span>
+    <span id="dbStatusText">checking CognoDB…</span>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<template id="tpl-error">
+  <div class="state-panel state-error">
+    <div class="state-icon">⚠</div>
+    <h3>Can't reach CognoDB</h3>
+    <p class="err-detail"></p>
+    <p class="hint">Check that your CognoDB instance is running and that backend/.env has the correct COGNODB_URI, COGNODB_USER and COGNODB_PASSWORD.</p>
+  </div>
+</template>
+
+<template id="tpl-loading">
+  <div class="state-panel state-loading">
+    <div class="spinner"></div>
+    <p>Loading graph data…</p>
+  </div>
+</template>
+
+<template id="tpl-empty">
+  <div class="state-panel state-empty">
+    <div class="state-icon">·</div>
+    <p class="empty-text"></p>
+  </div>
+</template>
+
+<script src="/app.js"></script>
+</body>
+</html>
